@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask ToDo List</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+<div class="container mt-3">
+    <div class="row ">
+        <div class="col-6 m-auto">
+            <form action="#">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="请输入任务">
+                    <button type="submit" class="btn btn-primary">添加事项</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 m-auto">
+            <div class="list-group  mb-3">
+                <label class="list-group-item">
+                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <span class="text-muted">Racing car sprays burning fuel into crowd.</span>
+                    <a class="text-decoration-none float-end" href="#">删除</a>
+                </label>
+                <label class="list-group-item">
+                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <span class="text-muted">Japanese princess to wed commoner.</span>
+                    <a class="text-decoration-none float-end" href="#">删除</a>
+                </label>
+                <label class="list-group-item">
+                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <span class="text-muted">Australian walks 100km after outback crash.</span>
+                    <a class="text-decoration-none float-end" href="#">删除</a>
+                </label>
+                <label class="list-group-item">
+                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <span class="text-muted">Man charged over missing wedding girl.</span>
+                    <a class="text-decoration-none float-end" href="#">删除</a>
+                </label>
+                <label class="list-group-item">
+                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <span class="text-muted">Los Angeles battles huge wildfires.</span>
+                    <a class="text-decoration-none float-end" href="#">删除</a>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 m-auto d-flex justify-content-between">
+            <button type="button" class="btn text-decoration-none" disabled>3条剩余</button>
+
+            <div class="btn-group">
+                <a href="#" class="btn btn-outline-primary active">全部</a>
+                <a href="#" class="btn btn-outline-primary">未完成</a>
+                <a href="#" class="btn btn-outline-primary">已完成</a>
+            </div>
+
+            <a href="#" class="btn btn-link text-decoration-none">清除已完成</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
