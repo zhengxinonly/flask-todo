@@ -10,9 +10,9 @@
 <div class="container mt-3">
     <div class="row ">
         <div class="col-6 m-auto">
-            <form action="#">
+            <form action="/add_todo" method="post">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="请输入任务">
+                    <input type="text" class="form-control" placeholder="请输入任务" name="info">
                     <button type="submit" class="btn btn-primary">添加事项</button>
                 </div>
             </form>
@@ -26,7 +26,7 @@
                     <label class="list-group-item">
                         <input class="form-check-input me-1" type="checkbox" {% if todo.done %} checked {% endif %}>
                         <span class="text-muted">{{ todo.info }}</span>
-                        <a class="text-decoration-none float-end" href="#">删除</a>
+                        <a class="text-decoration-none float-end" href="/clear_todo?id={{ todo.id }}">删除</a>
                     </label>
                 {% endfor %}
             </div>
@@ -43,7 +43,7 @@
                 <a href="/?key=done" class="btn btn-outline-primary {% if key=='done' %}active{% endif %}">已完成</a>
             </div>
 
-            <a href="/clear_done" class="btn btn-link text-decoration-none">清除已完成</a>
+            <a href="/clear_done?key=done" class="btn btn-link text-decoration-none">清除已完成</a>
         </div>
     </div>
 </div>

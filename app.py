@@ -31,5 +31,32 @@ def clear_done():
     return redirect('/')
 
 
+@app.route('/add_todo', methods=["POST"])
+def add_todo():
+    info = request.form.get('info', None)
+    if info:
+        todo.count += 1
+        item = {
+            'id': todo.count,
+            'info': info,
+            'done': False
+        }
+        todo.todo_list.append(item)
+
+    return redirect('/')
+
+
+@app.route('/clear_todo')
+def clear_todo():
+    todo_id = request.args.get('id', None)
+    print(todo_id)
+    if todo_id and todo_id.isdigit():
+        todo_id = int(todo_id)
+        current_todo = list(filter(lambda item: item['id'] == todo_id, todo.todo_list))
+        if current_todo[0] in todo.todo_list:
+            todo.todo_list.remove(current_todo[0])
+    return redirect('/')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
