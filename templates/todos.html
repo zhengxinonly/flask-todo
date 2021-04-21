@@ -22,46 +22,28 @@
     <div class="row">
         <div class="col-6 m-auto">
             <div class="list-group  mb-3">
-                <label class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="">
-                    <span class="text-muted">Racing car sprays burning fuel into crowd.</span>
-                    <a class="text-decoration-none float-end" href="#">删除</a>
-                </label>
-                <label class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="">
-                    <span class="text-muted">Japanese princess to wed commoner.</span>
-                    <a class="text-decoration-none float-end" href="#">删除</a>
-                </label>
-                <label class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="">
-                    <span class="text-muted">Australian walks 100km after outback crash.</span>
-                    <a class="text-decoration-none float-end" href="#">删除</a>
-                </label>
-                <label class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="">
-                    <span class="text-muted">Man charged over missing wedding girl.</span>
-                    <a class="text-decoration-none float-end" href="#">删除</a>
-                </label>
-                <label class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="">
-                    <span class="text-muted">Los Angeles battles huge wildfires.</span>
-                    <a class="text-decoration-none float-end" href="#">删除</a>
-                </label>
+                {% for todo in todo_list %}
+                    <label class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" {% if todo.done %} checked {% endif %}>
+                        <span class="text-muted">{{ todo.info }}</span>
+                        <a class="text-decoration-none float-end" href="#">删除</a>
+                    </label>
+                {% endfor %}
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-6 m-auto d-flex justify-content-between">
-            <button type="button" class="btn text-decoration-none" disabled>3条剩余</button>
+            <button type="button" class="btn text-decoration-none" disabled>{{ undone_count }}条剩余</button>
 
             <div class="btn-group">
-                <a href="#" class="btn btn-outline-primary active">全部</a>
-                <a href="#" class="btn btn-outline-primary">未完成</a>
-                <a href="#" class="btn btn-outline-primary">已完成</a>
+                <a href="/?key=all" class="btn btn-outline-primary {% if key=='all' %}active{% endif %}">全部</a>
+                <a href="/?key=undone" class="btn btn-outline-primary {% if key=='undone' %}active{% endif %}">未完成</a>
+                <a href="/?key=done" class="btn btn-outline-primary {% if key=='done' %}active{% endif %}">已完成</a>
             </div>
 
-            <a href="#" class="btn btn-link text-decoration-none">清除已完成</a>
+            <a href="/clear_done" class="btn btn-link text-decoration-none">清除已完成</a>
         </div>
     </div>
 </div>
