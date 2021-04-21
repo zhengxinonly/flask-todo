@@ -58,5 +58,21 @@ def clear_todo():
     return redirect('/')
 
 
+@app.route('/change_todo', methods=['PUT'])
+def change_todo():
+    todo_id = request.json.get('id', None)
+    done = request.json.get('done', None)
+
+    new_todo = {
+        'id': int(todo_id),
+        'done': done
+    }
+    for item in todo.todo_list:
+        if item['id'] == new_todo['id']:
+            item.update(new_todo)
+
+    return {'status': 'ok', 'message': '修改成功'}
+
+
 if __name__ == '__main__':
     app.run(debug=True)

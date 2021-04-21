@@ -24,7 +24,8 @@
             <div class="list-group  mb-3">
                 {% for todo in todo_list %}
                     <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" {% if todo.done %} checked {% endif %}>
+                        <input class="form-check-input me-1 todo-input" type="checkbox" {% if todo.done %}
+                               checked {% endif %} value="{{ todo.id }}">
                         <span class="text-muted">{{ todo.info }}</span>
                         <a class="text-decoration-none float-end" href="/clear_todo?id={{ todo.id }}">删除</a>
                     </label>
@@ -47,5 +48,29 @@
         </div>
     </div>
 </div>
+
+<script>
+  [...document.querySelectorAll('.todo-input')].forEach(function(item) {
+    item.addEventListener('change', function() {
+      console.log(item.checked)
+      console.log(item.value)
+      fetch('http://127.0.0.1:5000/change_todo',
+        {
+          method: 'put',
+          body: JSON.stringify({ id: item.value, done: item.checked }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      ).then(function(response) {
+        return response.json()
+      })
+        .then(function(myJson) {
+          console.log(myJson)
+        })
+
+    })
+  })
+</script>
 </body>
 </html>
